@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Frontend Mentor | Newsletter sign-up form with success message
+    </title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+              tomato: "hsl(4, 100%, 67%)",
+              Dark_Slate_Grey: "hsl(234, 29%, 20%)",
+              Charcoal_Grey: "hsl(235, 18%, 26%)",
+              Grey: "hsl(231, 7%, 60%)",
+              White: "hsl(0, 0%, 100%)",
+            },
+            fontFamily: {
+              roboto: ["Roboto", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body
+    class="font-roboto sm:bg-Dark_Slate_Grey text-Dark_Slate_Grey sm:text-sm w-full h-screen m-0 p-0 sm:my-auto sm:flex sm:flex-col sm:place-content-center"
+  >
+    <!-- Main Content Start -->
+    <main
+      class="gap-4 bg-white mx-0 max-w-screen-md sm:p-6 sm:m-auto sm:p-auto sm:m-auto sm:rounded-3xl"
+    >
+      <section id="homepage" class="m-auto sm:flex sm:flex-row-reverse">
+        <picture class="">
+          <source
+            media="(min-width: 638px)"
+            srcset="assets/images/illustration-sign-up-desktop.svg"
+          />
+          <source
+            media="(max-width: 638px)"
+            srcset="assets/images/illustration-sign-up-mobile.svg"
+          />
+          <img
+            class="w-full h-full sm:flex sm:place-content-center"
+            src="assets/images/illustration-sign-up-mobile.svg"
+            alt="mobile Sign up illustration"
+          />
+        </picture>
+        <div
+          class="m-0 py-8 px-6 sm:px-8 sm:py-0 flex flex-col place-content-center"
+        >
+          <h1 class="text-4xl font-bold sm:text-5xl">Stay updated!</h1>
+          <p class="my-6 sm:my-4">
+            Join 60,000+ product managers receiving monthly updates on:
+          </p>
+          <ul>
+            <li class="flex items-start gap-4 mb-2">
+              <img
+                class="flex-start"
+                src="assets/images/icon-list.svg"
+                alt="list icon"
+              />
+              Product discovery and building what matters
+            </li>
+            <li class="flex items-start gap-4 mb-2">
+              <img src="assets/images/icon-list.svg" alt="list icon" />
+              Measuring to ensure updates are a success
+            </li>
+            <li class="flex items-start gap-4 mb-2">
+              <img src="assets/images/icon-list.svg" alt="list icon" /> And much
+              more!
+            </li>
+          </ul>
+
+          <form
+            id="newsletterForm"
+            method="post"
+            class="grid grid-cols mt-6 sm:mt-4"
+          >
+            <div class="flex justify-between items-center">
+              <label for="email" class="font-bold py-2 text-sm"
+                >Email address</label
+              >
+              <span
+                id="emailError"
+                class="error hidden text-tomato font-bold text-sm"
+                >Invalid email address</span
+              >
+            </div>
+            <input
+              class="border border-Grey p-4 mb-6 rounded-lg focus:border focus:border-Dark_Slate_Grey invalid:border-tomato invalid:text-tomato invalid:bg-pink-200/50 focus:invalid:border focus:invalid:border-pink-500 focus:invalid:border-pink-500"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="email@company.com"
+            />
+            <button
+              id="submit"
+              type="submit"
+              class="bg-Dark_Slate_Grey text-white p-4 rounded-lg bg-gradient-to-r hover:to-orange-500 active:from-pink-500 active:to-orange-500"
+            >
+              Subscribe to monthly newsletter
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Success Modal Start -->
+      <section
+        id="successModal"
+        class="hidden bg-white p-4 my-auto h-screen w-full flex flex-col justify-between sm:place-content-center sm:p-12 sm:h-max sm:m-auto max-w-screen-sm sm:w-[26rem] sm:rounded-3xl"
+      >
+        <div class="flex flex-col gap-8 sm:gap-6">
+          <img
+            class="size-12 mt-24 mx-0 sm:mt-0"
+            src="assets/images/icon-success.svg"
+            alt="list icon"
+          />
+          <h1 class="text-4xl font-bold sm:text-5xl">
+            Thanks for subscribing!
+          </h1>
+          <p>
+            A confirmation email has been sent to
+            <span id="userEmail" class="font-bold"></span>. Please open it and
+            click the button inside to confirm your subscription.
+          </p>
+        </div>
+        <button
+          id="dismissBtn"
+          type="button"
+          class="bg-Dark_Slate_Grey text-white p-4 sm:mt-6 sm:mb-0 w-full rounded-lg hover:from-pink-500 bg-gradient-to-r hover:to-orange-500 active:from-pink-500 active:to-orange-500"
+        >
+          Dismiss message
+        </button>
+      </section>
+      <!-- Success Modal End -->
+    </main>
+
+    <footer class="text-center text-xs sm:text-white">
+      Challenge by
+      <a
+        class="text-Grey"
+        rel="noopener"
+        href="https://www.frontendmentor.io?ref=challenge"
+        target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a class="text-Grey" href="#">Onyinye Oguocha</a>.
+    </footer>
+
+    <!-- script  -->
+    <script src="app.js"></script>
+  </body>
+</html>
